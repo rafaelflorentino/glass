@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8" />
+	<title>Teste Javascript</title>
+	<script>
+
+
+	document.write("Data : "+ Date());
+
+
+	function red(){
+		h1 = document.getElementsByTagName("h1")[0];
+		var atributo = document.createAttribute("style");
+		atributo.value="color:red";
+		h1.setAttributeNode(atributo);
+	}
+	function blue(){
+		h1 = document.getElementsByTagName("h1")[0];
+		h1.setAttribute("style","color:blue;");
+
+	}
+	function yellow(){
+		h1 = document.getElementsByTagName("h1")[0];
+		h1.setAttribute("style","color:blue;");
+		h1.style.color = "yellow"; 	
+	}
+		
+	var quebrada = false;
+
+	function mudar(tipo){
+		if(tipo ==1){
+			console.log("acessa");
+			yellow();
+			}
+		if(tipo ==2){
+			console.log("apagada");
+			blue();
+			}
+		if(tipo ==3){
+			console.log("quebrada");
+			red();
+			quebrada = true;
+			}
+		if(quebrada){
+			console.log("quebrada");
+			red();
+
+		}			
+	}
+
+	var quebra = false;
+
+	function mudarLampada(tipo){
+
+		if(!quebra){
+			document.getElementById("luz").src = "_imagens/"+tipo+".jpg"
+			if(tipo == "lampada-quebrada"){
+				quebra = true;
+			}
+
+		}			
+	}
+			
+	
+
+		
+
+	</script>
+</head>
+<body>
+
+	<h1 onclick="mudar(3)" onmouseout="mudar(2)" onmousemove="mudar(1)">Teste Javascript</h1>
+	
+	<img id="luz" onclick="mudarLampada('lampada-quebrada')" onmouseout="mudarLampada('lampada-apagada')" onmousemove="mudarLampada('lampada-acesa')" src="_imagens/lampada-apagada.jpg" alt="">
+
+</body>
+</html>
